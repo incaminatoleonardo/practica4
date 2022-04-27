@@ -2,27 +2,27 @@ package ar.unrn.tp4.modelo;
 
 public class Participante {
 
-	private String nombre;
-	private String telefono;
-	private String region;
+	private Nombre nombre;
+	private Telefono telefono;
+	private Region region;
 
 	public Participante(String nombre, String telefono, String region) {
 
-		this.nombre = nombre;
-		this.telefono = telefono;
-		this.region = region;
+		this.nombre = new Nombre(nombre);
+		this.telefono = new Telefono(telefono);
+		this.region = new Region(region);
 	}
 
 	public String nombre() {
-		return this.nombre;
+		return nombre.nombre();
 	}
 
 	public String telefono() {
-		return this.telefono;
+		return telefono.telefono();
 	}
 
 	public String region() {
-		return this.region;
+		return region.region();
 	}
 
 }

@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import ar.unrn.tp4.modelo.Participante;
-import ar.unrn.tp4.modelo.RepositorioDeParticipantes;
+import ar.unrn.tp4.modelo.PersistenciaDeParticipantes;
 
-public class JdbcParticipante implements RepositorioDeParticipantes {
+public class JdbcParticipante implements PersistenciaDeParticipantes {
 
 	private Connection setupBaseDeDatos() {
 
@@ -25,7 +25,8 @@ public class JdbcParticipante implements RepositorioDeParticipantes {
 		}
 	}
 
-	public void nuevoParticipante(Participante participante) {
+	@Override
+	public void insertarParticipante(Participante participante) {
 		Connection conn = setupBaseDeDatos();
 		try (PreparedStatement st = conn
 				.prepareStatement("insert into participantes(nombre, telefono, region) values(?,?,?)");) {

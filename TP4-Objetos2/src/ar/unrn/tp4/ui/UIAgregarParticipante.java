@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import ar.unrn.tp4.modelo.Participante;
 import ar.unrn.tp4.modelo.RepositorioDeParticipantes;
 
 public class UIAgregarParticipante extends JFrame {
@@ -29,6 +28,7 @@ public class UIAgregarParticipante extends JFrame {
 	public UIAgregarParticipante(RepositorioDeParticipantes repo) throws HeadlessException {
 
 		this.repo = repo;
+
 	}
 
 	public void setupUIComponents() {
@@ -69,33 +69,39 @@ public class UIAgregarParticipante extends JFrame {
 	}
 
 	private void onBotonCargar() throws SQLException {
-		if (nombre.getText().equals("")) {
-			JOptionPane.showMessageDialog(this, "Debe cargar un nombre");
-			return;
-		}
-		if (telefono.getText().equals("")) {
-			JOptionPane.showMessageDialog(this, "Debe cargar un telefono");
-			return;
-		}
-		if (!validarTelefono(telefono.getText())) {
-			JOptionPane.showMessageDialog(this, "El teléfono debe ingresarse de la siguiente forma: NNNN-NNNNNN");
-			return;
-		}
-		if (!region.getText().equals("China") && !region.getText().equals("US") && !region.getText().equals("Europa")) {
-			JOptionPane.showMessageDialog(this, "Region desconocida. Las conocidas son: China, US, Europa");
+//		if (nombre.getText().equals("")) { // las validaciones van en el modelo
+//			JOptionPane.showMessageDialog(this, "Debe cargar un nombre");
+//			return;
+//		}
+//		if (telefono.getText().equals("")) {
+//			JOptionPane.showMessageDialog(this, "Debe cargar un telefono");
+//			return;
+//		}
+//		if (!validarTelefono(telefono.getText())) {
+//			JOptionPane.showMessageDialog(this, "El teléfono debe ingresarse de la siguiente forma: NNNN-NNNNNN");
+//			return;
+//		}
+//		if (!region.getText().equals("China") && !region.getText().equals("US") && !region.getText().equals("Europa")) {
+//			JOptionPane.showMessageDialog(this, "Region desconocida. Las conocidas son: China, US, Europa");
+//			return;
+//		}
+
+		try {
+			this.repo.nuevoParticipante(nombre.getText(), telefono.getText(), region.getText());
+
+		} catch (Exception e) {
+
+			JOptionPane.showMessageDialog(this, e.getMessage());
 			return;
 		}
 
-		Participante participante = new Participante(nombre.getText(), telefono.getText(), region.getText());
-		this.repo.nuevoParticipante(participante);
 		dispose();
 	}
 
-	// creo que paquete modelo, yo lo pondria en el modelo, haria una clase
-	// validacion y se la paso por parametos para que la llame. PREGUNTAR
-	private boolean validarTelefono(String telefono) {
-		String regex = "\\d{4}-\\d{6}";
-		return telefono.matches(regex);
-	}
+//
+//	private boolean validarTelefono(String telefono) {
+//		String regex = "\\d{4}-\\d{6}";
+//		return telefono.matches(regex);
+//	}
 
 }
