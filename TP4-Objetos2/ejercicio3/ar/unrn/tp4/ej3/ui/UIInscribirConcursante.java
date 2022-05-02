@@ -74,6 +74,7 @@ public class UIInscribirConcursante {
 	}
 
 	private void todosLosConcursos() {
+
 		// carga del archivo de texto concursos.txt los concursos
 	}
 
@@ -82,7 +83,7 @@ public class UIInscribirConcursante {
 		}
 	}
 
-	private boolean validations() {
+	private boolean validations() { // todas las validaciones las llevo al modelo
 		if ("".equals(txtName.getText())) {
 			JOptionPane.showMessageDialog(this.contentPane, "Nombre no puede ser vacio");
 			return false;
