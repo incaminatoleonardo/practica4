@@ -2,7 +2,10 @@ package ar.unrn.tp4.ej3.main;
 
 import javax.swing.SwingUtilities;
 
-import ar.unrn.oop2.programa.RadioCompetition;
+import ar.unrn.tp4.ej3.modelo.SistemaConcursantes;
+import ar.unrn.tp4.ej3.modelo.SistemaConcursos;
+import ar.unrn.tp4.ej3.persistenciaArchivo.AccesoArchivos;
+import ar.unrn.tp4.ej3.ui.UIInscribirConcursante;
 
 public class MainInscribirConcursantes {
 
@@ -22,7 +25,11 @@ public class MainInscribirConcursantes {
 	}
 
 	private void start() {
-		new RadioCompetition();
+
+		SistemaConcursos concursos = new SistemaConcursos(new AccesoArchivos());
+		SistemaConcursantes concursantes = new SistemaConcursantes(new AccesoArchivos());
+
+		new UIInscribirConcursante(concursos, concursantes);
 	}
 
 }

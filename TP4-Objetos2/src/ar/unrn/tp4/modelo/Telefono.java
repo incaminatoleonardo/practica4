@@ -9,15 +9,12 @@ public class Telefono {
 		if (numero.equals("")) {
 
 			throw new RuntimeException("Debe cargar un telefono");
-			// JOptionPane.showMessageDialog(this, "Debe cargar un telefono");
-			// return;
+
 		}
 		if (!validarTelefono(numero)) {
 
 			throw new RuntimeException("El teléfono debe ingresarse de la siguiente forma: NNNN-NNNNNN\"");
-			// JOptionPane.showMessageDialog(this, "El teléfono debe ingresarse de la
-			// siguiente forma: NNNN-NNNNNN");
-			// return;
+
 		}
 
 		this.numero = numero;
@@ -28,7 +25,7 @@ public class Telefono {
 		return this.numero;
 	}
 
-	private boolean validarTelefono(String telefono) { // esto va en la clase telefono
+	private boolean validarTelefono(String telefono) {
 		String regex = "\\d{4}-\\d{6}";
 		return telefono.matches(regex);
 	}

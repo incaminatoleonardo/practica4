@@ -1,4 +1,4 @@
-package ar.unrn.tp4.modelo;
+package ar.unrn.tp4.ej3.modelo;
 
 public class Nombre {
 
@@ -8,16 +8,17 @@ public class Nombre {
 
 		if (nombre.equals("")) { // las validaciones van en el modelo
 
-			throw new RuntimeException("Debe cargar un nombre");
+			throw new RuntimeException("Nombre no puede ser vacio");
 
 		}
 
 		this.nombre = nombre;
+
 	}
 
-	public String nombre() {
-
-		return this.nombre;
+	@Override
+	public String toString() {
+		return nombre;
 	}
 
 }
