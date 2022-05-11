@@ -12,12 +12,13 @@ public class Concursos {
 		this.concursos = concursos;
 	}
 
-	public List<Concurso> concursosActivos(List<Concurso> concursos) {
+	public List<Concurso> concursosActivos() {
 
 		List<Concurso> concursosActivos = new ArrayList<>();
 
-		for (Concurso concurso : concursosActivos) {
-			concurso.estaActivoAgregalo(concurso, concursosActivos);
+		for (Concurso concurso : concursos) {
+			concursosActivos = concurso.estaActivoAgregalo(concurso, concursosActivos);
+			// concursosActivos.add(concurso.estaActivoAgregalo(concurso));
 		}
 
 		return concursosActivos;

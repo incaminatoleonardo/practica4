@@ -23,13 +23,13 @@ public class Concurso {
 		return idconcurso + ", " + nombre + ", " + fechaInicioInscripcion + ", " + fechaFinInscripcion;
 	}
 
-	public void estaActivoAgregalo(Concurso concurso, List<Concurso> concursosActivos) {
+	public List<Concurso> estaActivoAgregalo(Concurso concurso, List<Concurso> concursosActivos) {
 
 		LocalDate fechaActual = LocalDate.now();
 		if ((fechaActual.isAfter(fechaInicioInscripcion)) && fechaActual.isBefore(fechaFinInscripcion)) {
 			concursosActivos.add(concurso);
 		}
-
+		return concursosActivos;
 	}
 
 }

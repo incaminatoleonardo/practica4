@@ -22,9 +22,9 @@ public class AccesoArchivos implements PersistenciaConcursos, PersistenciaConcur
 	private String pathNoteInscripcion = "C:\\Users\\Marii\\OneDrive\\Escritorio\\Uni\\inscriptosTp4.txt";
 
 	@Override
-	public List<String> leerConcursos() {
+	public List<Concurso> leerConcursos() {
 
-		File file = new File(pathCasaConcursos);
+		File file = new File(pathNoteConcursos);
 
 		List<String> archivo;
 		try {
@@ -55,14 +55,14 @@ public class AccesoArchivos implements PersistenciaConcursos, PersistenciaConcur
 
 		}
 
-		return archivo;
+		return concursos;
 
 	}
 
 	@Override
 	public void registrar(Concursante concursante) {
 		try {
-			Files.write(Paths.get(pathCasaInscripcion), concursante.toString().getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get(pathNoteInscripcion), concursante.toString().getBytes(), StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			throw new RuntimeException("No se pudo guardar en disco", e);
 		}

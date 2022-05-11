@@ -8,7 +8,7 @@ public class Concursante {
 	private Dni dni;
 	private Telefono telefono;
 	private Mail mail;
-	private int idconcurso;
+	private int idConcurso;
 
 	public Concursante(String nombre, String apellido, String dni, String telefono, String mail, int idconcurso) {
 
@@ -21,14 +21,34 @@ public class Concursante {
 		if (idconcurso <= 0) { // ver la validacion de ocmbo box
 			throw new RuntimeException("Debe elegir un concurso");
 		}
-		this.idconcurso = idconcurso;
+		this.idConcurso = idconcurso;
 	}
 
 	@Override
 	public String toString() {
 
 		return apellido.toString() + ", " + nombre.toString() + ", " + telefono.toString() + ", " + mail.toString()
-				+ ", " + idconcurso + System.lineSeparator();
+				+ ", " + idConcurso + System.lineSeparator();
+	}
+
+	public String nombre() {
+		return nombre.toString();
+	}
+
+	public String apellido() {
+		return apellido.toString();
+	}
+
+	public String telefono() {
+		return telefono.toString();
+	}
+
+	public String mail() {
+		return mail.toString();
+	}
+
+	public int idConcurso() {
+		return idConcurso;
 	}
 
 }

@@ -1,10 +1,5 @@
 package ar.unrn.tp4.ej3.main;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import ar.unrn.tp4.ej3.modelo.Concurso;
 import ar.unrn.tp4.ej3.modelo.SistemaConcursos;
 import ar.unrn.tp4.ej3.persistenciaArchivo.AccesoArchivos;
 
@@ -32,39 +27,39 @@ public class MainPrueba {
 //
 //		}
 
-		List<String> concursosLista = concursos.leerConcursos();
+//		List<String> concursosLista = concursos.leerConcursos();
 
-		List<Concurso> con = new ArrayList<>();
-
-		LocalDate fechaActual = LocalDate.now();
-
-		for (String string : concursosLista) {
-			String[] concursoString = string.split(",");
-			String[] anioMesDiaIncio = concursoString[2].split("/");
-			String[] anioMesDiaFin = concursoString[3].split("/");
-			int anoInicio = Integer.parseInt(anioMesDiaIncio[0].trim());
-			int mesInicio = Integer.parseInt(anioMesDiaIncio[1]);
-			int diaInicio = Integer.parseInt(anioMesDiaIncio[2]);
-			int anoFin = Integer.parseInt(anioMesDiaFin[0].trim());
-			int mesFin = Integer.parseInt(anioMesDiaFin[1]);
-			int diaFin = Integer.parseInt(anioMesDiaFin[2]);
-
-			LocalDate fechaInicio = LocalDate.of(anoInicio, mesInicio, diaInicio);
-			LocalDate fechaFin = LocalDate.of(anoFin, mesFin, diaFin);
+//		List<Concurso> con = new ArrayList<>();
+//
+//		LocalDate fechaActual = LocalDate.now();
+//
+//		for (String string : concursosLista) {
+//			String[] concursoString = string.split(",");
+//			String[] anioMesDiaIncio = concursoString[2].split("/");
+//			String[] anioMesDiaFin = concursoString[3].split("/");
+//			int anoInicio = Integer.parseInt(anioMesDiaIncio[0].trim());
+//			int mesInicio = Integer.parseInt(anioMesDiaIncio[1]);
+//			int diaInicio = Integer.parseInt(anioMesDiaIncio[2]);
+//			int anoFin = Integer.parseInt(anioMesDiaFin[0].trim());
+//			int mesFin = Integer.parseInt(anioMesDiaFin[1]);
+//			int diaFin = Integer.parseInt(anioMesDiaFin[2]);
+//
+//			LocalDate fechaInicio = LocalDate.of(anoInicio, mesInicio, diaInicio);
+//			LocalDate fechaFin = LocalDate.of(anoFin, mesFin, diaFin);
 
 //			System.out.println(anioMesDiaIncio[0] + "/" + anioMesDiaIncio[1] + "/" + anioMesDiaIncio[2]);
 //			System.out.println(anioMesDiaFin[0] + "/" + anioMesDiaFin[1] + "/" + anioMesDiaFin[2]);
-			Concurso concurso = new Concurso(Integer.parseInt(concursoString[0]), concursoString[1], fechaInicio,
-					fechaFin);
-
-			con.add(concurso);
-
-		}
-
-		for (Concurso concurso : con) {
-			System.out.println(concurso.toString());
-		}
-
+//			Concurso concurso = new Concurso(Integer.parseInt(concursoString[0]), concursoString[1], fechaInicio,
+//					fechaFin);
+//
+//			con.add(concurso);
+//
+//		}
+//
+//		for (Concurso concurso : con) {
+//			System.out.println(concurso.toString());
+//		}
+//
 	}
 
 }

@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZoneId;
+import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mysql.jdbc.PreparedStatement;
 
 import ar.unrn.tp4.ej3.modelo.Concurso;
 import ar.unrn.tp4.ej3.modelo.PersistenciaConcursos;
@@ -16,7 +15,7 @@ import ar.unrn.tp4.ej3.modelo.PersistenciaConcursos;
 public class JdbcConcurso implements PersistenciaConcursos {// aca debo leer concurso
 
 	@Override
-	public List<String> leerConcursos() {
+	public List<Concurso> leerConcursos() {
 
 		List<Concurso> concursos = new ArrayList<>();
 
@@ -24,20 +23,20 @@ public class JdbcConcurso implements PersistenciaConcursos {// aca debo leer con
 		try {
 
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/objetos2", "root", "");
-			PreparedStatement statement = (PreparedStatement) con.createStatement();
+			Statement statement = con.createStatement();
 			ResultSet rs = statement
 					.executeQuery("select idConcurso, nombre, fechaInicioInsc, fechaFinInsc from concursos");
 
 			while (rs.next()) {
 				Concurso concurso = new Concurso(rs.getInt("idConcurso"), rs.getString("nombre"),
-						rs.getDate("fechaInicioInsc").toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-						rs.getDate("fechaFinInsc").toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+						LocalDate.of(2022, 5, 1), LocalDate.of(2022, 6, 1));
+//						rs.getDate("fechaInicioInsc").toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+//						rs.getDate("fechaFinInsc").toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+				concursos.add(concurso);
 			}
 
-			statement.executeUpdate();
-
 		} catch (SQLException e) {
-			throw new RuntimeException("No se pudo guardar en BD", e);
+			throw new RuntimeException("No se leer en la BD", e);
 
 		} finally {
 			if (con != null) {
@@ -50,7 +49,7 @@ public class JdbcConcurso implements PersistenciaConcursos {// aca debo leer con
 			}
 		}
 
-		return null;
+		return concursos;
 	}
 
 //	List<Beneficio> beneficios = new ArrayList<Beneficio>();

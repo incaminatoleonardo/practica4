@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface PersistenciaConcursos {
 
-	public List<String> leerConcursos();
+	public List<Concurso> leerConcursos();
 
 }

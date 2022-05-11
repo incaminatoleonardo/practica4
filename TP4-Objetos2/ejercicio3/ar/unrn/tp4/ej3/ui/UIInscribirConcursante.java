@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import ar.unrn.tp4.ej3.modelo.Concurso;
 import ar.unrn.tp4.ej3.modelo.RepositorioInscriptos;
 import ar.unrn.tp4.ej3.modelo.SistemaConcursos;
 
@@ -38,6 +39,7 @@ public class UIInscribirConcursante {
 
 	private RepositorioInscriptos repoInscriptos;
 
+	// sistema de concursos debe ser una interfaz
 	public UIInscribirConcursante(SistemaConcursos concursos, RepositorioInscriptos repoInscriptos) {
 		var frame = new JFrame("Inscription to Competition");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +71,7 @@ public class UIInscribirConcursante {
 		txtEmail.setColumns(10);
 		btnOk = new JButton("Ok");
 		btnOk.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				btnOk.setEnabled(false);
 				saveInscription();
@@ -83,10 +86,13 @@ public class UIInscribirConcursante {
 	private void todosLosConcursos(SistemaConcursos concursos) {
 		// carga del archivo de texto concursos.txt los concursos
 
-		List<String> concursosActivos = concursos.concursosActivos();
-		for (String string : concursosActivos) {
-			comboBox.addItem(string);
+		List<Concurso> concursosActivos = concursos.concursosActivos();
+		for (Concurso concurso : concursosActivos) {
+			comboBox.addItem(concurso.toString());
 		}
+//		for (Concurso string : concursosActivos) {
+//			comboBox.addItem(string);
+//		}
 
 	}
 
